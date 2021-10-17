@@ -22,7 +22,7 @@
     "prettycss": "prettier --write **/*.{css,scss}",
     "prettyjson": "prettier --write **/*.json",
     "prettymd": "prettier --write **/*.md",
-    "prepare": "husky install"
+    "prepare": "pushd .. && husky install && popd"
   },
   "eslintConfig": {
     "extends": [
@@ -51,11 +51,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --allow-empty"
+      "pre-commit": "lint-staged",
+      "pre-push": "../.husky/pre-push"
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,css,scss}": [
+    "**/*.{html,js,jsx,ts,tsx,json,css,scss}": [
       "prettier --write"
     ]
   }

@@ -1,0 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Block pushing directly to a branch that is in PROTECTED_BRANCHES, instead require using a separate branch and with pull requests
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+PROTECTED_BRANCHES="^(master|main|feature)"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]
+then
+    echo -e "\n🚫 Cannot push directly to ($BRANCH) branch. Use pull request.\n" && exit 1
+fi
+
+exit 0

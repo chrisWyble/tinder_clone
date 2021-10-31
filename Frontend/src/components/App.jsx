@@ -1,4 +1,4 @@
-import logo from "resources/logo.svg";
+import logo from "resources/Tinder-Logo.png";
 import "css/App.css";
 import Window from "components/Window";
 
